@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario de Prendas</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Inventario de Prendas</h2>
+
+<table id="tablaInventario">
+  <thead>
+    <tr>
+      <th>SKU</th>
+      <th>Nombre de la Prenda</th>
+      <th>Tipo de Prenda</th>
+      <th>Tallas</th>
+      <th>Colores</th>
+      <th>Stock</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SKU123</td>
+      <td>Vestido Floral</td>
+      <td>midi</td>
+      <td>S, M, L</td>
+      <td>rojo, azul, verde, amarillo, negro, blanco</td>
+      <td id="stockSKU123">
+        <ul>
+          <li>1L negro</li>
+          <li>2M azul</li>
+          <!-- Puedes agregar más elementos según tus necesidades -->
+        </ul>
+      </td>
+    </tr>
+    <!-- Puedes agregar más filas según tus necesidades -->
+  </tbody>
+</table>
+
+<form id="formRestockSKU123">
+  <label for="tallaRestock">Talla:</label>
+  <select id="tallaRestock" name="tallaRestock">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+  </select>
+
+  <label for="colorRestock">Color:</label>
+  <select id="colorRestock" name="colorRestock">
+    <option value="rojo">rojo</option>
+    <option value="azul">azul</option>
+    <option value="verde">verde</option>
+    <option value="amarillo">amarillo</option>
+    <option value="negro">negro</option>
+    <option value="blanco">blanco</option>
+  </select>
+
+  <label for="cantidadRestock">Cantidad a añadir:</label>
+  <input type="number" id="cantidadRestock" name="cantidadRestock" min="0" required>
+
+  <button type="button" onclick="restock('SKU123')">Restock</button>
+</form>
+
+<form id="formQuitarStockSKU123">
+  <label for="tallaQuitar">Talla:</label>
+  <select id="tallaQuitar" name="tallaQuitar">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+  </select>
+
+  <label for="colorQuitar">Color:</label>
+  <select id="colorQuitar" name="colorQuitar">
+    <option value="rojo">rojo</option>
+    <option value="azul">azul</option>
+    <option value="verde">verde</option>
+    <option value="amarillo">amarillo</option>
+    <option value="negro">negro</option>
+    <option value="blanco">blanco</option>
+  </select>
+
+  <label for="cantidadQuitar">Cantidad a quitar:</label>
+  <input type="number" id="cantidadQuitar" name="cantidadQuitar" min="0" required>
+
+  <button type="button" onclick="quitarStock('SKU123')">Quitar Stock</button>
+</form>
+
+<script>
+  function restock(sku) {
+    var form = document.getElementById('formRestock' + sku);
+    var talla = form.elements['tallaRestock'].value;
+    var color = form.elements['colorRestock'].value;
+    var cantidad = parseInt(form.elements['cantidadRestock'].value, 10);
+
+    // Aquí debes realizar la lógica para restock de la combinación de talla y color para el SKU específico (sku)
+
+    // Ejemplo de actualización visual (simulado)
+    var stockElement = document.getElementById('stock' + sku);
+    stockElement.innerHTML = actualizarStock(stockElement.innerHTML, talla, color, cantidad);
+
+    // Puedes adaptar esta lógica según tus necesidades reales
+  }
+
+  function quitarStock(sku) {
+    var form = document.getElementById('formQuitarStock' + sku);
+    var talla = form.elements['tallaQuitar'].value;
+    var color = form.elements['colorQuitar'].value;
+    var cantidad = parseInt(form.elements['cantidadQuitar'].value, 10);
+
+    // Aquí debes realizar la lógica para quitar el stock de la combinación de talla y color para el SKU específico (sku)
+
+    // Ejemplo de actualización visual (simulado)
+    var stockElement = document.getElementById('stock' + sku);
+    stockElement.innerHTML = actualizarStock(stockElement.innerHTML, talla, color, -cantidad);
+
+    // Puedes adaptar esta lógica según tus necesidades reales
+  }
+
+  function actualizarStock(stockActual, talla, color, cantidad) {
+    // Ejemplo de lógica para actualizar el stock (simulado)
+    var stock = stockActual.split('</li>');
+    var index = stock.findIndex(item => item.includes(talla) && item.includes(color));
+    
+    if (index !== -1) {
+      var cantidadActual = parseInt(stock[index].match(/\d+/)[0], 10);
+      stock[index] = '<li>' + (cantidadActual + cantidad) + ' ' + talla + ' ' + color;
+    } else {
+      stock.push('<li>' + cantidad + ' ' + talla + ' ' + color);
+    }
+
+    return stock.join('</li>');
+  }
+</script>
+
+</body>
+</html>

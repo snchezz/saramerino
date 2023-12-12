@@ -1,0 +1,14 @@
+[
+    {
+      "SKU": "SKU123",
+      "Nombre": "Vestido Floral",
+      "TipoPrenda": "midi",
+      "Tallas": ["S", "M", "L"],
+      "Colores": ["rojo", "azul", "verde", "amarillo", "negro", "blanco"],
+      "Stock": [
+        "1L negro",
+        "2M azul"
+      ]
+    }
+]
+  

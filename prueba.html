@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Home</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h3><span id="nombreUsuario"></span></h3>
+    </div>
+
+
+    <!--
+      <a href="home.html" class="btn-floating btn-large red">
+            <i class="large material-icons">home</i>
+        </a>
+        <ul>
+          
+
+        </ul>
+-->
+
+
+    <ul id="slide-out" class="sidenav">
+        <li>
+            <div class="user-view">
+                <div class="background black">
+
+                </div>
+                <span id="nombreUsuario" class="white-text">Andrés Sánchez</span>
+                <span class="white-text email">Arte Novia</span>
+            </div>
+        </li>
+        <li><a href="#"><i class="material-icons">insert_chart</i>Estadísticas</a></li>
+        <li><a href="#"><i class="material-icons">work</i>Ventas</a></li>
+        <li><a href="generate.html"><i class="material-icons">mode_edit</i>Crear Codigos Barra</a></li>
+        <li><a href="camera.html"><i class="material-icons">camera_alt</i>Escanear</a></li>
+        <li><a href="home.html"><i class="material-icons">home</i>Home</a></li>
+
+        <!--
+            <li>
+            <div class="divider"></div>
+            </li>
+            <li><a class="waves-effect" href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+        -->
+    </ul>
+
+    <div class="fixed-action-btn">
+        <a href="#" data-target="slide-out" class="sidenav-trigger btn-floating btn-large red"><i
+                class="material-icons">menu</i></a>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
